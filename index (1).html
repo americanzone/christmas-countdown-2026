@@ -1,0 +1,1662 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111a38">
+  <meta name="description" content="A little winter postcard with a live countdown to Christmas.">
+  <title>Christmas Is on Its Way — Northstar &amp; Pine</title>
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6781200894899603"
+    crossorigin="anonymous"></script>
+
+  <style>
+    :root {
+      color-scheme: dark;
+      --night: #111a38;
+      --night-light: #1e2a4d;
+      --cream: #f7f2e7;
+      --muted: #c3c9d6;
+      --gold: #e6c77e;
+      --rose: #e59b8e;
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: "Avenir Next", Avenir, "Segoe UI", system-ui, sans-serif;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-width: 320px;
+      min-height: 100vh;
+      margin: 0;
+      overflow-x: hidden;
+      color: var(--cream);
+      background:
+        radial-gradient(ellipse at 78% 18%, rgba(98, 111, 161, .24), transparent 32%),
+        radial-gradient(ellipse at 12% 68%, rgba(53, 95, 99, .25), transparent 38%),
+        linear-gradient(140deg, #111a38, #172344 58%, #142b38);
+      background-attachment: fixed;
+      font-family: var(--sans);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body::before {
+      position: fixed;
+      z-index: 0;
+      inset: 0;
+      background-image: radial-gradient(rgba(255, 244, 211, .6) .7px, transparent .9px);
+      background-size: 43px 43px;
+      opacity: .12;
+      pointer-events: none;
+      content: "";
+    }
+
+    button,
+    textarea {
+      font: inherit;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    button:focus-visible,
+    a:focus-visible,
+    textarea:focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 4px;
+    }
+
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .skip-link {
+      position: fixed;
+      z-index: 50;
+      top: -60px;
+      left: 16px;
+      padding: 12px 16px;
+      border-radius: 8px;
+      color: var(--night);
+      background: var(--cream);
+      transition: top .2s ease;
+    }
+
+    .skip-link:focus {
+      top: 16px;
+    }
+
+    .site-shell {
+      position: relative;
+      z-index: 1;
+      width: min(1160px, calc(100% - 64px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      display: flex;
+      min-height: 90px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      border-bottom: 1px solid rgba(247, 242, 231, .14);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      display: grid;
+      width: 40px;
+      height: 40px;
+      flex: 0 0 auto;
+      place-items: center;
+      border: 1px solid rgba(230, 199, 126, .65);
+      border-radius: 50%;
+      color: var(--gold);
+    }
+
+    .brand-mark svg {
+      width: 21px;
+      height: 21px;
+    }
+
+    .brand-name {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      font-family: var(--serif);
+      font-size: 20px;
+      letter-spacing: -.04em;
+    }
+
+    .brand-name span {
+      color: #c2c9d6;
+      font-family: var(--sans);
+      font-size: 8px;
+      font-weight: 700;
+      letter-spacing: .21em;
+    }
+
+    .top-note {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: #c2c9d6;
+      font-size: 9px;
+      font-weight: 650;
+      letter-spacing: .15em;
+    }
+
+    .top-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #c7d5b5;
+      box-shadow: 0 0 12px rgba(199, 213, 181, .7);
+    }
+
+    .top-actions {
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .countdown-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--gold);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: .13em;
+      text-decoration: none;
+      transition: color .2s ease;
+    }
+
+    .countdown-link:hover {
+      color: var(--cream);
+    }
+
+    .countdown-link span {
+      font-size: 15px;
+    }
+
+    .music-toggle {
+      position: relative;
+      display: grid;
+      width: 38px;
+      height: 38px;
+      flex: 0 0 auto;
+      place-items: center;
+      border: 1px solid rgba(230, 199, 126, .55);
+      border-radius: 50%;
+      color: var(--gold);
+      background: rgba(255, 255, 255, .035);
+      cursor: pointer;
+      transition: background .2s ease, transform .2s ease, box-shadow .2s ease;
+    }
+
+    .music-toggle:hover {
+      transform: translateY(-1px);
+      background: rgba(230, 199, 126, .12);
+    }
+
+    .music-toggle[aria-pressed="true"] {
+      background: rgba(230, 199, 126, .15);
+      box-shadow: 0 0 16px rgba(230, 199, 126, .18);
+    }
+
+    .music-toggle[aria-pressed="true"]::after {
+      position: absolute;
+      right: 1px;
+      bottom: 1px;
+      width: 8px;
+      height: 8px;
+      border: 1px solid var(--night);
+      border-radius: 50%;
+      background: #b7d5a6;
+      content: "";
+    }
+
+    .music-toggle svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.04fr) minmax(340px, .96fr);
+      align-items: center;
+      gap: clamp(42px, 7vw, 92px);
+      padding: 54px 0 62px;
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 2;
+      max-width: 570px;
+    }
+
+    .eyebrow,
+    .card-label,
+    .progress-label,
+    .art-stamp,
+    .art-note-label,
+    .dialog-kicker,
+    .wish-label {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin: 0;
+      color: #c3cbd7;
+    }
+
+    .eyebrow span {
+      color: var(--gold);
+      font-size: 14px;
+    }
+
+    h1 {
+      margin: 22px 0 18px;
+      font-family: var(--serif);
+      font-size: clamp(57px, 6.6vw, 84px);
+      font-weight: 400;
+      letter-spacing: -.065em;
+      line-height: .99;
+    }
+
+    h1 em {
+      color: var(--gold);
+      font-weight: 400;
+    }
+
+    .hero-description {
+      max-width: 425px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    .countdown-card {
+      max-width: 550px;
+      margin-top: 29px;
+      padding: 21px 22px 19px;
+      border: 1px solid rgba(247, 242, 231, .16);
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, .085), rgba(255, 255, 255, .035));
+      box-shadow: 0 18px 55px rgba(0, 0, 0, .16);
+      backdrop-filter: blur(10px);
+    }
+
+    .card-heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 15px;
+      border-bottom: 1px solid rgba(247, 242, 231, .13);
+    }
+
+    .card-label {
+      margin: 0 0 5px;
+      color: #b7bfce;
+      font-size: 8px;
+    }
+
+    .target-date {
+      margin: 0;
+      color: var(--cream);
+      font-family: var(--serif);
+      font-size: 19px;
+    }
+
+    .calendar-mark {
+      display: grid;
+      width: 35px;
+      height: 35px;
+      place-items: center;
+      border: 1px solid rgba(230, 199, 126, .4);
+      border-radius: 50%;
+      color: var(--gold);
+      font-size: 19px;
+    }
+
+    .countdown-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      margin: 20px 0 14px;
+    }
+
+    .countdown-unit {
+      display: flex;
+      min-width: 0;
+      flex-direction: column;
+      align-items: center;
+      gap: 7px;
+      border-right: 1px solid rgba(247, 242, 231, .13);
+    }
+
+    .countdown-unit:last-child {
+      border-right: 0;
+    }
+
+    .count-number {
+      color: var(--cream);
+      font-family: var(--serif);
+      font-size: clamp(31px, 3.5vw, 42px);
+      font-variant-numeric: tabular-nums;
+      letter-spacing: -.06em;
+      line-height: 1;
+    }
+
+    .count-label {
+      color: #b9c1ce;
+      font-size: 8px;
+      font-weight: 650;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .holiday-message {
+      min-height: 18px;
+      margin: 0 0 15px;
+      color: var(--gold);
+      font-family: var(--serif);
+      font-size: 13px;
+      font-style: italic;
+    }
+
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 8px;
+      color: #b7bfce;
+      font-size: 8px;
+    }
+
+    .progress-label span:first-child {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .progress-label b {
+      color: var(--gold);
+      font-size: 12px;
+    }
+
+    .progress-track {
+      height: 3px;
+      overflow: hidden;
+      border-radius: 10px;
+      background: rgba(247, 242, 231, .16);
+    }
+
+    .progress-bar {
+      width: 0;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #bf9d5e, #f1d99a);
+      box-shadow: 0 0 10px rgba(230, 199, 126, .52);
+      transition: width .7s ease;
+    }
+
+    .wish-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      margin-top: 20px;
+      padding: 12px 17px;
+      border: 0;
+      border-radius: 999px;
+      color: #342b30;
+      background: var(--rose);
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 700;
+      transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
+    }
+
+    .wish-button:hover {
+      transform: translateY(-2px);
+      background: #f0aa9d;
+      box-shadow: 0 8px 24px rgba(229, 155, 142, .2);
+    }
+
+    .wish-button span {
+      color: #fff3d4;
+      font-size: 15px;
+    }
+
+    .wish-caption {
+      margin: 10px 0 0;
+      color: #bdc4d0;
+      font-family: var(--serif);
+      font-size: 12px;
+      font-style: italic;
+    }
+
+    .hero-art {
+      position: relative;
+      width: min(100%, 505px);
+      margin-left: auto;
+      padding: 15px 13px 26px;
+    }
+
+    .globe-shell {
+      position: relative;
+      width: min(100%, 460px);
+      aspect-ratio: 1;
+      margin: 0 auto;
+      padding: 9px;
+      overflow: hidden;
+      border: 1px solid rgba(230, 199, 126, .72);
+      border-radius: 50%;
+      background: linear-gradient(145deg, rgba(238, 221, 178, .56), rgba(255, 255, 255, .08));
+      box-shadow: 0 28px 75px rgba(0, 0, 0, .3);
+    }
+
+    .globe-shell::after {
+      position: absolute;
+      inset: 12px;
+      border: 1px solid rgba(255, 255, 255, .2);
+      border-radius: 50%;
+      pointer-events: none;
+      content: "";
+    }
+
+    .globe-shell svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+    }
+
+    .globe-base {
+      position: relative;
+      z-index: 2;
+      width: 57%;
+      height: 38px;
+      margin: -2px auto 0;
+      border: 1px solid rgba(230, 199, 126, .72);
+      border-radius: 0 0 48% 48%;
+      color: #f1e4c5;
+      background: linear-gradient(180deg, #765345, #443447);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, .24);
+      text-align: center;
+    }
+
+    .globe-base span {
+      display: inline-block;
+      padding-top: 9px;
+      font-size: 7px;
+      font-weight: 700;
+      letter-spacing: .17em;
+    }
+
+    .art-stamp {
+      position: absolute;
+      z-index: 3;
+      top: 54px;
+      right: -2px;
+      padding: 10px 13px;
+      border: 1px solid rgba(230, 199, 126, .35);
+      border-radius: 8px;
+      color: #d2d7df;
+      background: rgba(17, 26, 56, .9);
+      font-size: 8px;
+      line-height: 1.7;
+      text-align: center;
+      transform: rotate(4deg);
+    }
+
+    .art-stamp strong {
+      color: var(--gold);
+    }
+
+    .art-note {
+      position: absolute;
+      z-index: 4;
+      bottom: 54px;
+      left: -27px;
+      width: 220px;
+      padding: 15px 18px 17px;
+      color: #273247;
+      background: var(--cream);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, .24);
+      transform: rotate(-3deg);
+    }
+
+    .art-note-label {
+      display: block;
+      margin-bottom: 9px;
+      color: #8c7853;
+      font-size: 7px;
+      letter-spacing: .12em;
+    }
+
+    .art-note strong {
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 400;
+      letter-spacing: -.03em;
+      line-height: 1.15;
+    }
+
+    .site-footer {
+      display: flex;
+      min-height: 64px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      border-top: 1px solid rgba(247, 242, 231, .14);
+      color: #bdc4d0;
+      font-size: 10px;
+      letter-spacing: .04em;
+    }
+
+    .footer-season {
+      color: #d1d6df;
+      font-size: 8px;
+      font-weight: 700;
+      letter-spacing: .16em;
+    }
+
+    .footer-season b {
+      margin-right: 5px;
+      color: var(--gold);
+      font-size: 12px;
+    }
+
+    /* Snow falls across the entire viewport and doesn't block interaction. */
+    #snow-layer {
+      position: fixed;
+      z-index: 10;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .snowflake {
+      position: absolute;
+      top: 0;
+      border-radius: 50%;
+      background: rgba(255, 253, 247, .9);
+      box-shadow: 0 0 8px rgba(255, 253, 247, .38);
+      animation: snowfall linear infinite;
+      will-change: transform, opacity;
+    }
+
+    @keyframes snowfall {
+      0% {
+        opacity: 0;
+        transform: translate3d(0, -12vh, 0);
+      }
+      12%,
+      84% {
+        opacity: var(--flake-opacity, .7);
+      }
+      100% {
+        opacity: 0;
+        transform: translate3d(var(--flake-drift, 30px), 110vh, 0);
+      }
+    }
+
+    /* Santa crosses the screen on page load and once a minute. */
+    .sleigh-flight {
+      position: fixed;
+      z-index: 9;
+      top: clamp(105px, 16vh, 160px);
+      left: 0;
+      width: min(490px, 88vw);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      filter: drop-shadow(0 5px 12px rgba(0, 0, 0, .25));
+    }
+
+    .sleigh-flight.is-flying {
+      visibility: visible;
+      animation: sleigh-cross 14s linear both;
+    }
+
+    .sleigh-art {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .sleigh-flight.is-flying .sleigh-art {
+      animation: sleigh-bob 1.5s ease-in-out infinite alternate;
+    }
+
+    @keyframes sleigh-cross {
+      0% {
+        opacity: 0;
+        transform: translate3d(-120%, 0, 0);
+      }
+      5%,
+      92% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+        transform: translate3d(calc(100vw + 120%), 8px, 0);
+      }
+    }
+
+    @keyframes sleigh-bob {
+      from { transform: translateY(-3px); }
+      to { transform: translateY(4px); }
+    }
+
+    /* Wish dialog */
+    .wish-dialog {
+      position: fixed;
+      inset: 0;
+      width: min(460px, calc(100% - 32px));
+      max-width: none;
+      max-height: min(90vh, 720px);
+      margin: auto;
+      padding: 31px;
+      overflow: auto;
+      border: 1px solid #d8cba9;
+      border-radius: 22px;
+      color: #273247;
+      background: var(--cream);
+      box-shadow: 0 28px 90px rgba(0, 0, 0, .42);
+    }
+
+    .wish-dialog::backdrop {
+      background: rgba(5, 9, 23, .74);
+      backdrop-filter: blur(7px);
+    }
+
+    .dialog-close {
+      position: absolute;
+      top: 12px;
+      right: 14px;
+      display: grid;
+      width: 34px;
+      height: 34px;
+      place-items: center;
+      border: 0;
+      border-radius: 50%;
+      color: #5c6471;
+      background: transparent;
+      cursor: pointer;
+      font-size: 24px;
+      line-height: 1;
+    }
+
+    .dialog-close:hover {
+      background: rgba(39, 50, 71, .08);
+    }
+
+    .dialog-kicker {
+      margin: 0 0 11px;
+      color: #92774d;
+      font-size: 8px;
+    }
+
+    .wish-dialog h2 {
+      margin: 0 0 10px;
+      font-family: var(--serif);
+      font-size: 35px;
+      font-weight: 400;
+      letter-spacing: -.04em;
+    }
+
+    .dialog-description {
+      margin: 0 0 21px;
+      color: #697284;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .wish-label {
+      display: block;
+      margin-bottom: 8px;
+      color: #697284;
+      font-size: 8px;
+    }
+
+    .wish-dialog textarea {
+      display: block;
+      width: 100%;
+      min-height: 118px;
+      resize: vertical;
+      padding: 13px 14px;
+      border: 1px solid #d5d5cc;
+      border-radius: 12px;
+      color: #273247;
+      background: #fffdf8;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .wish-dialog textarea::placeholder {
+      color: #a5a9ae;
+    }
+
+    .dialog-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-top: 15px;
+    }
+
+    .wish-status {
+      max-width: 210px;
+      color: #717b83;
+      font-size: 10px;
+      line-height: 1.5;
+    }
+
+    .save-wish {
+      display: inline-flex;
+      flex: 0 0 auto;
+      align-items: center;
+      gap: 9px;
+      padding: 11px 14px;
+      border: 0;
+      border-radius: 999px;
+      color: var(--cream);
+      background: #35445f;
+      cursor: pointer;
+      font-size: 11px;
+      font-weight: 650;
+      transition: background .2s ease, transform .2s ease;
+    }
+
+    .save-wish:hover {
+      transform: translateY(-1px);
+      background: #465a7a;
+    }
+
+    .save-wish span {
+      color: var(--gold);
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr) minmax(300px, .88fr);
+        gap: 32px;
+      }
+
+      .art-note {
+        left: -7px;
+        width: 205px;
+      }
+
+      .art-stamp {
+        right: -2px;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .site-shell {
+        width: min(540px, calc(100% - 40px));
+      }
+
+      .topbar {
+        min-height: 78px;
+        gap: 12px;
+      }
+
+      .top-note {
+        display: none;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 36px;
+        padding: 43px 0 45px;
+      }
+
+      .hero-copy {
+        max-width: none;
+      }
+
+      h1 {
+        font-size: clamp(58px, 10.8vw, 76px);
+      }
+
+      .countdown-card {
+        max-width: none;
+      }
+
+      .hero-art {
+        width: min(100%, 440px);
+        margin: 0 auto;
+      }
+
+      .art-note {
+        left: 0;
+        bottom: 48px;
+      }
+
+      .site-footer {
+        min-height: 58px;
+      }
+    }
+
+    @media (max-width: 430px) {
+      .site-shell {
+        width: calc(100% - 32px);
+      }
+
+      .brand {
+        gap: 8px;
+      }
+
+      .brand-name {
+        font-size: 18px;
+      }
+
+      .top-actions {
+        gap: 8px;
+      }
+
+      .music-toggle {
+        width: 33px;
+        height: 33px;
+      }
+
+      .countdown-link {
+        gap: 4px;
+        font-size: 8px;
+        letter-spacing: .06em;
+      }
+
+      .hero {
+        padding-top: 36px;
+      }
+
+      .hero-description {
+        font-size: 14px;
+      }
+
+      .countdown-card {
+        padding: 18px 13px 16px;
+      }
+
+      .count-number {
+        font-size: 32px;
+      }
+
+      .count-label {
+        font-size: 7px;
+        letter-spacing: .09em;
+      }
+
+      .art-stamp {
+        top: 44px;
+        padding: 8px 10px;
+        font-size: 7px;
+      }
+
+      .art-note {
+        bottom: 42px;
+        width: 190px;
+        padding: 13px 15px 15px;
+      }
+
+      .art-note strong {
+        font-size: 18px;
+      }
+
+      .site-footer {
+        align-items: flex-start;
+        flex-direction: column;
+        justify-content: center;
+        gap: 7px;
+        padding: 14px 0;
+      }
+
+      .wish-dialog {
+        padding: 27px 22px;
+      }
+
+      .dialog-actions {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .wish-status {
+        max-width: 100%;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .sleigh-flight.is-flying {
+        animation-duration: 10s;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <div id="snow-layer" aria-hidden="true"></div>
+
+  <div class="sleigh-flight" id="sleigh-flight" aria-hidden="true">
+    <svg class="sleigh-art" viewBox="0 0 520 180" xmlns="http://www.w3.org/2000/svg">
+      <!-- Starlight trail -->
+      <g fill="#f4dfa6" opacity=".9">
+        <path d="m22 40 3 7 7 3-7 3-3 7-3-7-7-3 7-3 3-7Z"/>
+        <circle cx="170" cy="42" r="2"/>
+        <circle cx="192" cy="57" r="1.5"/>
+        <circle cx="202" cy="38" r="1.4"/>
+        <circle cx="147" cy="61" r="1.4"/>
+      </g>
+
+      <!-- Reindeer -->
+      <g transform="translate(340 35)">
+        <path
+          d="M7 52c7-15 23-23 41-20 13 2 20 8 26 15l10-4 7-17c4-5 12-5 16 0l3 8 11 2v8l-10 4-9-1-9 10-6 22h-6l2-21-15-1-5 24h-6l1-24-23-1-5 25h-6l1-27-11 4Z"
+          fill="#b28d67"
+          stroke="#efddb6"
+          stroke-width="1.5"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M99 36c-5-8-7-14-12-19m6 11-10-1m8-5 8-8m4 21c4-8 8-13 14-16m-8 9 10 1"
+          fill="none"
+          stroke="#e6c77e"
+          stroke-width="2.5"
+          stroke-linecap="round"
+        />
+        <circle cx="103" cy="41" r="1.7" fill="#283145"/>
+        <circle cx="117" cy="47" r="3.2" fill="#dc796f"/>
+      </g>
+
+      <!-- Sleigh, presents and Santa -->
+      <path d="M181 92c28-7 48-8 70-3" fill="none" stroke="#e6c77e" stroke-width="2" stroke-linecap="round"/>
+
+      <rect x="75" y="72" width="29" height="30" rx="2" fill="#d8b66b"/>
+      <path d="M89 72v30M75 83h29" stroke="#fff0ce" stroke-width="3"/>
+      <path d="M89 72c-9-9-16-3-11 2 3 2 7 1 11-2Zm1 0c8-9 15-3 10 2-3 2-6 1-10-2Z"
+        fill="none" stroke="#fff0ce" stroke-width="2.5"/>
+
+      <path
+        d="M45 105c26 17 76 19 120 5 19-6 32-14 45-25l-9 31c-23 22-86 29-126 12-17-7-26-14-30-23Z"
+        fill="#a84048"
+        stroke="#e6c77e"
+        stroke-width="3"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M56 130c27 25 92 29 132 6 14-8 21-17 20-26m-148 34c39 19 91 16 124-4"
+        fill="none"
+        stroke="#e6c77e"
+        stroke-width="3"
+        stroke-linecap="round"
+      />
+      <path d="M71 107h110" stroke="#f4dfa6" stroke-width="2" opacity=".8"/>
+
+      <!-- Santa -->
+      <path d="M103 91c-1-17 9-29 24-33 13-4 28 4 31 18l3 18-58 4Z" fill="#c4474d"/>
+      <circle cx="132" cy="52" r="14" fill="#f0c8ac"/>
+      <path d="M118 49c-1-14 11-23 24-20 9 2 14 9 15 17-9-4-20-4-29 1Z" fill="#c4474d"/>
+      <path d="M118 50c10-6 26-6 37-1l-2 7c-12-4-25-3-34 2Z" fill="#fff3df"/>
+      <circle cx="158" cy="46" r="5" fill="#fff3df"/>
+      <path d="M121 59c8 7 20 8 29 0l-3 13c-8 11-20 10-28 0Z" fill="#fff3df"/>
+      <circle cx="137" cy="53" r="1.5" fill="#493a36"/>
+      <path d="M115 76c-7 5-12 10-14 17m49-15c8 3 14 8 17 14"
+        fill="none" stroke="#f0c8ac" stroke-width="6" stroke-linecap="round"/>
+      <path d="M112 93h52" stroke="#fff3df" stroke-width="3" stroke-linecap="round"/>
+    </svg>
+  </div>
+
+  <div class="site-shell">
+    <header class="topbar">
+      <a class="brand" href="#main-content" aria-label="Northstar and Pine, home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M12 2v20M3.3 7l17.4 10M3.3 17 20.7 7M8.5 3.5 12 7l3.5-3.5M8.5 20.5 12 17l3.5 3.5M3.1 11l4.8 1-1 4.8M20.9 13l-4.8-1 1-4.8M7 7l1 4.8-4.8 1M17 17l-1-4.8 4.8-1"
+              stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <span class="brand-name">
+          northstar &amp; pine
+          <span>THE WINTER POST</span>
+        </span>
+      </a>
+
+      <div class="top-note">
+        <span class="top-dot" aria-hidden="true"></span>
+        <span>THE NORTH POLE IS CALLING</span>
+      </div>
+
+      <div class="top-actions">
+        <button
+          class="music-toggle"
+          id="music-toggle"
+          type="button"
+          aria-label="Play Christmas bell music"
+          aria-pressed="false"
+          title="Play Christmas bell music"
+        >
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9Z"
+              stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M10 21h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M21 8c1 1.3 1 3.7 0 5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <a class="countdown-link" href="#countdown">
+          COUNTDOWN <span aria-hidden="true">↓</span>
+        </a>
+      </div>
+    </header>
+
+    <span class="visually-hidden" id="music-status" role="status" aria-live="polite">
+      Bell music is off. Activate the music button to play.
+    </span>
+
+    <main id="main-content">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">
+            <span aria-hidden="true">✦</span>
+            <span id="seasonal-label">A LITTLE WINTER POSTCARD</span>
+          </p>
+
+          <h1 id="hero-title">Christmas<br>is <em>on its way.</em></h1>
+
+          <p class="hero-description">
+            A little place to pause, watch the snow, and look forward to the
+            brightest, cosiest day of the year.
+          </p>
+
+          <section class="countdown-card" id="countdown" aria-label="Christmas countdown">
+            <div class="card-heading">
+              <div>
+                <p class="card-label">YOUR CHRISTMAS COUNTDOWN</p>
+                <p class="target-date" id="target-date">December 25</p>
+              </div>
+              <span class="calendar-mark" aria-hidden="true">✧</span>
+            </div>
+
+            <div class="countdown-grid" role="timer" aria-live="off" aria-label="Live time until Christmas">
+              <div class="countdown-unit">
+                <span class="count-number" id="days">000</span>
+                <span class="count-label">Days</span>
+              </div>
+              <div class="countdown-unit">
+                <span class="count-number" id="hours">00</span>
+                <span class="count-label">Hours</span>
+              </div>
+              <div class="countdown-unit">
+                <span class="count-number" id="minutes">00</span>
+                <span class="count-label">Minutes</span>
+              </div>
+              <div class="countdown-unit">
+                <span class="count-number" id="seconds">00</span>
+                <span class="count-label">Seconds</span>
+              </div>
+            </div>
+
+            <p class="holiday-message" id="holiday-message" aria-live="polite">
+              Somewhere, a little magic is getting ready.
+            </p>
+
+            <div class="progress-label">
+              <span><b aria-hidden="true">✦</b> THE CHRISTMAS SPIRIT</span>
+              <span id="progress-value">0%</span>
+            </div>
+            <div
+              class="progress-track"
+              id="progress-track"
+              role="progressbar"
+              aria-label="Progress through the Christmas year"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              aria-valuenow="0"
+            >
+              <div class="progress-bar" id="progress-bar"></div>
+            </div>
+          </section>
+
+          <button class="wish-button" id="wish-button" type="button">
+            Write a wish <span aria-hidden="true">✦</span>
+          </button>
+          <p class="wish-caption">Tuck a little hope away for Christmas.</p>
+        </div>
+
+        <div class="hero-art">
+          <div class="art-stamp">
+            WINTER MAIL<br>
+            <strong>FROM THE NORTH POLE</strong>
+          </div>
+
+          <div class="globe-shell">
+            <svg viewBox="0 0 600 600" role="img" aria-labelledby="globe-title globe-description">
+              <title id="globe-title">A cosy cabin inside a Christmas snow globe</title>
+              <desc id="globe-description">
+                A warm little cabin, evergreen trees, a crescent moon, and falling snow.
+              </desc>
+
+              <defs>
+                <clipPath id="orb-clip">
+                  <circle cx="300" cy="300" r="276"/>
+                </clipPath>
+                <linearGradient id="orb-sky" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#29325e"/>
+                  <stop offset=".58" stop-color="#587c8b"/>
+                  <stop offset="1" stop-color="#b2c9c4"/>
+                </linearGradient>
+                <linearGradient id="orb-snow" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#f5f1df"/>
+                  <stop offset="1" stop-color="#cbd8cf"/>
+                </linearGradient>
+                <linearGradient id="cabin-wall" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#a66c5d"/>
+                  <stop offset="1" stop-color="#714956"/>
+                </linearGradient>
+              </defs>
+
+              <circle cx="300" cy="300" r="290" fill="#e8d29c"/>
+
+              <g clip-path="url(#orb-clip)">
+                <rect width="600" height="600" fill="url(#orb-sky)"/>
+
+                <circle cx="431" cy="139" r="42" fill="#f4e4ba"/>
+                <circle cx="449" cy="125" r="39" fill="#364467"/>
+
+                <g fill="#fff1cc">
+                  <circle cx="105" cy="114" r="2"/>
+                  <circle cx="168" cy="78" r="1.7"/>
+                  <circle cx="234" cy="128" r="1.5"/>
+                  <circle cx="344" cy="87" r="1.6"/>
+                  <circle cx="507" cy="201" r="2"/>
+                  <circle cx="91" cy="253" r="1.6"/>
+                  <circle cx="472" cy="76" r="1.4"/>
+                  <circle cx="289" cy="67" r="1.4"/>
+                </g>
+
+                <g fill="#f1dfad" opacity=".92">
+                  <path d="m154 161 3 7 7 3-7 3-3 7-3-7-7-3 7-3 3-7Z"/>
+                  <path d="m492 274 2 5 5 2-5 2-2 5-2-5-5-2 5-2 2-5Z"/>
+                  <path d="m337 170 2 4 4 2-4 2-2 4-2-4-4-2 4-2 2-4Z"/>
+                </g>
+
+                <path d="M0 346c94-62 185-49 274-8 97 45 190 35 326-24v286H0V346Z"
+                  fill="#587981"/>
+                <path d="M0 421c102-63 193-31 282 8 106 46 197 13 318-35v206H0V421Z"
+                  fill="#315b68"/>
+
+                <!-- Distant pines -->
+                <g fill="#244b55">
+                  <path d="m93 365 34-91 34 91h-20l31 60H82l31-60Z"/>
+                  <path d="m426 376 39-106 39 106h-23l35 66h-102l35-66Z"/>
+                  <path d="m155 386 27-72 27 72h-16l24 46h-70l24-46Z"/>
+                </g>
+
+                <!-- Cabin and snowy roof -->
+                <ellipse cx="301" cy="462" rx="126" ry="20" fill="#263f50" opacity=".42"/>
+                <path d="M196 371 298 294l112 78v121H196Z" fill="url(#cabin-wall)"/>
+                <path d="m176 376 120-102 132 99-13 12-119-78-107 81Z" fill="#603d4d"/>
+                <path d="m179 374 117-100 129 96-14 5-116-79-103 81Z" fill="#f1eee0"/>
+                <path d="M295 274h20v-36h-20Z" fill="#754952"/>
+                <path d="M292 239h27l-5-8h-18Z" fill="#f1eee0"/>
+
+                <rect x="218" y="393" width="44" height="48" rx="3" fill="#f1cb79"/>
+                <rect x="224" y="399" width="32" height="36" fill="#f5dfa0"/>
+                <path d="M240 399v36m-16-18h32" stroke="#9c6554" stroke-width="4"/>
+
+                <rect x="337" y="393" width="43" height="48" rx="3" fill="#edc679"/>
+                <rect x="343" y="399" width="31" height="36" fill="#f5dfa0"/>
+                <path d="M358 399v36m-15-18h31" stroke="#9c6554" stroke-width="4"/>
+
+                <rect x="283" y="409" width="37" height="84" rx="3" fill="#583c49"/>
+                <circle cx="311" cy="452" r="2.5" fill="#e8c87f"/>
+
+                <!-- Foreground trees -->
+                <g>
+                  <path d="m116 470 40-104 40 104h-24l35 66H105l35-66Z" fill="#244b48"/>
+                  <path d="m447 474 37-97 37 97h-22l32 61h-94l32-61Z" fill="#244b48"/>
+                  <path d="m390 484 26-69 26 69h-15l22 43h-66l22-43Z" fill="#315f53"/>
+                </g>
+
+                <path d="M0 481c98-38 173 1 267 10 117 11 209-42 333-9v118H0Z"
+                  fill="url(#orb-snow)"/>
+                <path d="M0 532c108-26 192 13 295 6 108-8 190-34 305-14v76H0Z"
+                  fill="#e2e8dc" opacity=".8"/>
+
+                <g fill="#fffdf5">
+                  <circle cx="125" cy="212" r="2.6"/>
+                  <circle cx="183" cy="255" r="2"/>
+                  <circle cx="389" cy="225" r="2.4"/>
+                  <circle cx="450" cy="316" r="2"/>
+                  <circle cx="96" cy="416" r="2"/>
+                  <circle cx="490" cy="437" r="2.5"/>
+                  <circle cx="170" cy="482" r="2"/>
+                  <circle cx="394" cy="511" r="2"/>
+                  <circle cx="260" cy="232" r="1.8"/>
+                </g>
+              </g>
+
+              <circle cx="300" cy="300" r="278" fill="none" stroke="rgba(255,255,255,.36)" stroke-width="3"/>
+              <path d="M132 143c26-45 67-74 111-88" fill="none" stroke="rgba(255,255,255,.28)" stroke-width="9" stroke-linecap="round"/>
+            </svg>
+          </div>
+
+          <div class="globe-base">
+            <span>✦ &nbsp; NORTH POLE • EST. 1823 &nbsp; ✦</span>
+          </div>
+
+          <div class="art-note">
+            <span class="art-note-label">A SMALL REMINDER</span>
+            <strong>There’s magic<br>in the waiting.</strong>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>Sending warm wishes, wherever you are.</span>
+      <span class="footer-season"><b aria-hidden="true">✦</b> CHRISTMAS <span id="footer-year"></span></span>
+    </footer>
+  </div>
+
+  <dialog class="wish-dialog" id="wish-dialog" aria-labelledby="wish-title">
+    <button class="dialog-close" id="close-dialog" type="button" aria-label="Close the wish window">×</button>
+    <p class="dialog-kicker">✦ &nbsp; A MOMENT JUST FOR YOU</p>
+    <h2 id="wish-title">Write a little wish.</h2>
+    <p class="dialog-description">
+      Dream a little. Your wish stays in this browser and isn’t sent anywhere.
+    </p>
+
+    <form id="wish-form">
+      <label class="wish-label" for="wish-input">YOUR WISH</label>
+      <textarea
+        id="wish-input"
+        maxlength="220"
+        placeholder="A little more time with the people I love..."
+        required
+      ></textarea>
+      <div class="dialog-actions">
+        <span class="wish-status" id="wish-status" role="status">
+          Saved only on this device.
+        </span>
+        <button class="save-wish" type="submit">
+          Keep my wish <span aria-hidden="true">✦</span>
+        </button>
+      </div>
+    </form>
+  </dialog>
+
+  <script>
+    // Live countdown to Christmas in the visitor's local time.
+    const daysEl = document.getElementById("days");
+    const hoursEl = document.getElementById("hours");
+    const minutesEl = document.getElementById("minutes");
+    const secondsEl = document.getElementById("seconds");
+    const targetDateEl = document.getElementById("target-date");
+    const holidayMessage = document.getElementById("holiday-message");
+    const progressValue = document.getElementById("progress-value");
+    const progressTrack = document.getElementById("progress-track");
+    const progressBar = document.getElementById("progress-bar");
+    const heroTitle = document.getElementById("hero-title");
+    const seasonalLabel = document.getElementById("seasonal-label");
+    const footerYear = document.getElementById("footer-year");
+
+    const dateFormatter = new Intl.DateTimeFormat(undefined, {
+      month: "long",
+      day: "numeric",
+      year: "numeric"
+    });
+
+    function getChristmasInfo(now) {
+      const currentYear = now.getFullYear();
+      const endOfChristmasDay = new Date(currentYear, 11, 25, 23, 59, 59, 999);
+      const year = now.getTime() > endOfChristmasDay.getTime()
+        ? currentYear + 1
+        : currentYear;
+
+      return {
+        year,
+        target: new Date(year, 11, 25, 0, 0, 0, 0),
+        previous: new Date(year - 1, 11, 25, 0, 0, 0, 0),
+        isChristmasDay: now.getMonth() === 11 && now.getDate() === 25
+      };
+    }
+
+    function updateCountdown() {
+      const now = new Date();
+      const { year, target, previous, isChristmasDay } = getChristmasInfo(now);
+      const remaining = Math.max(0, target.getTime() - now.getTime());
+
+      const days = Math.floor(remaining / 86400000);
+      const hours = Math.floor((remaining % 86400000) / 3600000);
+      const minutes = Math.floor((remaining % 3600000) / 60000);
+      const seconds = Math.floor((remaining % 60000) / 1000);
+
+      daysEl.textContent = String(days).padStart(3, "0");
+      hoursEl.textContent = String(hours).padStart(2, "0");
+      minutesEl.textContent = String(minutes).padStart(2, "0");
+      secondsEl.textContent = String(seconds).padStart(2, "0");
+      targetDateEl.textContent = dateFormatter.format(target);
+      footerYear.textContent = String(year);
+
+      if (isChristmasDay) {
+        heroTitle.innerHTML = "Merry<br><em>Christmas!</em>";
+        seasonalLabel.textContent = "THE MOST WONDERFUL DAY IS HERE";
+        holidayMessage.textContent = "Wishing you a day full of warmth and wonder.";
+      } else {
+        heroTitle.innerHTML = "Christmas<br>is <em>on its way.</em>";
+        seasonalLabel.textContent = "A LITTLE WINTER POSTCARD";
+        holidayMessage.textContent = "Somewhere, a little magic is getting ready.";
+      }
+
+      const progress = Math.min(
+        100,
+        Math.max(0, ((now.getTime() - previous.getTime()) / (target.getTime() - previous.getTime())) * 100)
+      );
+      const roundedProgress = Math.round(progress);
+
+      progressValue.textContent = `${roundedProgress}%`;
+      progressBar.style.width = `${progress}%`;
+      progressTrack.setAttribute("aria-valuenow", String(roundedProgress));
+      progressTrack.setAttribute("aria-valuetext", `${roundedProgress}% through the Christmas year`);
+    }
+
+    updateCountdown();
+    window.setInterval(updateCountdown, 1000);
+
+    // Gentle full-screen snowfall. Respect reduced-motion preferences.
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const snowLayer = document.getElementById("snow-layer");
+
+    if (!prefersReducedMotion) {
+      const flakeCount = window.innerWidth < 600 ? 30 : 65;
+
+      for (let i = 0; i < flakeCount; i++) {
+        const flake = document.createElement("span");
+        const duration = 10 + Math.random() * 14;
+        const size = 2 + Math.random() * 3.5;
+
+        flake.className = "snowflake";
+        flake.style.left = `${Math.random() * 100}%`;
+        flake.style.width = `${size}px`;
+        flake.style.height = `${size}px`;
+        flake.style.setProperty("--flake-opacity", String(.35 + Math.random() * .55));
+        flake.style.setProperty("--flake-drift", `${Math.round(Math.random() * 90 - 45)}px`);
+        flake.style.animationDuration = `${duration}s`;
+        flake.style.animationDelay = `${-Math.random() * duration}s`;
+
+        snowLayer.appendChild(flake);
+      }
+    }
+
+    // Make Santa's sleigh pass on page load and every 60 seconds.
+    const sleigh = document.getElementById("sleigh-flight");
+
+    function flySleigh() {
+      if (prefersReducedMotion) return;
+
+      sleigh.classList.remove("is-flying");
+      void sleigh.offsetWidth;
+      sleigh.classList.add("is-flying");
+    }
+
+    sleigh.addEventListener("animationend", (event) => {
+      if (event.animationName === "sleigh-cross") {
+        sleigh.classList.remove("is-flying");
+      }
+    });
+
+    if (!prefersReducedMotion) {
+      flySleigh();
+      window.setInterval(flySleigh, 60_000);
+    }
+
+    // Bell melody generated with Web Audio; starts after the visitor clicks.
+    const musicToggle = document.getElementById("music-toggle");
+    const musicStatus = document.getElementById("music-status");
+
+    let audioContext = null;
+    let musicMaster = null;
+    let musicLoopTimer = null;
+    let musicPlaying = false;
+    let musicStarting = false;
+
+    const bellPattern = [
+      [0.0, 659.25, 1.8, .62],
+      [0.8, 783.99, 1.8, .55],
+      [1.7, 987.77, 2.1, .64],
+      [3.0, 783.99, 1.8, .54],
+      [3.9, 659.25, 1.9, .58],
+      [4.9, 587.33, 1.8, .5],
+      [5.7, 659.25, 1.8, .58],
+      [6.6, 783.99, 2.0, .62],
+      [7.7, 880.00, 1.9, .59],
+      [8.6, 783.99, 1.8, .54],
+      [9.5, 659.25, 1.9, .58],
+      [10.5, 587.33, 1.8, .5],
+      [11.3, 659.25, 1.8, .58],
+      [12.2, 783.99, 2.0, .59],
+      [13.2, 523.25, 2.4, .48]
+    ];
+
+    function updateMusicButton(playing) {
+      musicToggle.setAttribute("aria-pressed", String(playing));
+      musicToggle.setAttribute(
+        "aria-label",
+        playing ? "Pause Christmas bell music" : "Play Christmas bell music"
+      );
+      musicToggle.title = playing
+        ? "Pause Christmas bell music"
+        : "Play Christmas bell music";
+      musicStatus.textContent = playing
+        ? "Soft Christmas bell music is playing."
+        : "Bell music is off. Activate the music button to play.";
+    }
+
+    function playBell(frequency, startTime, duration, volume) {
+      const envelope = audioContext.createGain();
+      envelope.gain.setValueAtTime(0.0001, startTime);
+      envelope.gain.exponentialRampToValueAtTime(0.22 * volume, startTime + 0.025);
+      envelope.gain.exponentialRampToValueAtTime(0.0001, startTime + duration);
+      envelope.connect(musicMaster);
+
+      const partials = [
+        [1, .7],
+        [2.01, .2],
+        [3.9, .07]
+      ];
+
+      for (const [ratio, level] of partials) {
+        const oscillator = audioContext.createOscillator();
+        const partialGain = audioContext.createGain();
+
+        oscillator.type = "sine";
+        oscillator.frequency.setValueAtTime(frequency * ratio, startTime);
+        partialGain.gain.setValueAtTime(level, startTime);
+        oscillator.connect(partialGain);
+        partialGain.connect(envelope);
+        oscillator.start(startTime);
+        oscillator.stop(startTime + duration + .04);
+      }
+    }
+
+    function scheduleBellLoop() {
+      if (!musicPlaying || !audioContext || audioContext.state !== "running") return;
+
+      const start = audioContext.currentTime + .08;
+      for (const [offset, frequency, duration, volume] of bellPattern) {
+        playBell(frequency, start + offset, duration, volume);
+      }
+
+      musicLoopTimer = window.setTimeout(scheduleBellLoop, 16_000);
+    }
+
+    async function startBellMusic() {
+      if (musicPlaying || musicStarting) return;
+      musicStarting = true;
+
+      try {
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+
+        if (!AudioContextClass) {
+          musicStatus.textContent = "This browser does not support bell music.";
+          return;
+        }
+
+        if (!audioContext) {
+          audioContext = new AudioContextClass();
+          musicMaster = audioContext.createGain();
+          musicMaster.gain.setValueAtTime(0, audioContext.currentTime);
+          musicMaster.connect(audioContext.destination);
+        }
+
+        if (audioContext.state === "suspended") {
+          await audioContext.resume();
+        }
+
+        const now = audioContext.currentTime;
+        musicMaster.gain.cancelScheduledValues(now);
+        musicMaster.gain.setValueAtTime(0, now);
+        musicMaster.gain.linearRampToValueAtTime(.3, now + .6);
+
+        musicPlaying = true;
+        updateMusicButton(true);
+        scheduleBellLoop();
+      } catch {
+        musicStatus.textContent = "Bell music could not be started in this browser.";
+      } finally {
+        musicStarting = false;
+      }
+    }
+
+    function stopBellMusic() {
+      musicPlaying = false;
+      window.clearTimeout(musicLoopTimer);
+      updateMusicButton(false);
+
+      if (audioContext && musicMaster && audioContext.state === "running") {
+        const now = audioContext.currentTime;
+        musicMaster.gain.cancelScheduledValues(now);
+        musicMaster.gain.setTargetAtTime(0, now, .08);
+
+        window.setTimeout(() => {
+          if (!musicPlaying && audioContext && audioContext.state === "running") {
+            audioContext.suspend().catch(() => {});
+          }
+        }, 500);
+      }
+    }
+
+    musicToggle.addEventListener("click", () => {
+      if (musicPlaying) {
+        stopBellMusic();
+      } else {
+        startBellMusic();
+      }
+    });
+
+    // Save the visitor's wish locally in this browser.
+    const wishKey = "northstar-pine-christmas-wish";
+    const wishButton = document.getElementById("wish-button");
+    const wishDialog = document.getElementById("wish-dialog");
+    const wishForm = document.getElementById("wish-form");
+    const wishInput = document.getElementById("wish-input");
+    const wishStatus = document.getElementById("wish-status");
+
+    function readSavedWish() {
+      try {
+        return localStorage.getItem(wishKey) || "";
+      } catch {
+        return "";
+      }
+    }
+
+    wishButton.addEventListener("click", () => {
+      const savedWish = readSavedWish();
+      wishInput.value = savedWish;
+      wishStatus.textContent = savedWish
+        ? "Your wish is tucked away on this device."
+        : "Saved only in this browser—nothing is sent anywhere.";
+      wishDialog.showModal();
+      wishInput.focus();
+    });
+
+    document.getElementById("close-dialog").addEventListener("click", () => {
+      wishDialog.close();
+    });
+
+    wishDialog.addEventListener("click", (event) => {
+      if (event.target === wishDialog) {
+        wishDialog.close();
+      }
+    });
+
+    wishForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const wish = wishInput.value.trim();
+
+      if (!wish) {
+        wishStatus.textContent = "Write a little wish before tucking it away.";
+        wishInput.focus();
+        return;
+      }
+
+      try {
+        localStorage.setItem(wishKey, wish);
+        wishStatus.textContent = "Saved—your wish stays only in this browser.";
+      } catch {
+        wishStatus.textContent = "Your wish is here for this visit; browser storage is unavailable.";
+      }
+    });
+  </script>
+</body>
+</html>
